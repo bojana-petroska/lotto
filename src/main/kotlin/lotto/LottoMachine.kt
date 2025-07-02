@@ -14,5 +14,5 @@ class LottoMachine(val money: Money) {
         }
     }
 
-    private fun generateRandomNumber() = (1 .. 45).shuffled().take(6);
+    private fun generateRandomNumber() = (1 .. 45).shuffled().take(6).sorted();
 }
