@@ -1,6 +1,6 @@
 package lotto
 
-class Money(amount: Int) {
+class Money(val amount: Int) {
     init {
         require(amount >= 1000) {
             "the amount should be minumum 1,000 KRW"
@@ -9,4 +9,6 @@ class Money(amount: Int) {
             "the amount should be divisible by 1000"
         }
     }
+
+    fun getMoneyAmount(): Int = amount
 }
