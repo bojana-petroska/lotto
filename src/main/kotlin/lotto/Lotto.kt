@@ -16,5 +16,13 @@ open class Lotto(val numbers: List<Int>) {
         }
     }
 
-    fun getListOfNumbers(): List<Int> = numbers
+    fun matchCount(winningNums: List<Int>): Int {
+        return numbers.count {
+            it in winningNums
+        }
+    }
+
+    fun containsBonusNum(num: Int) = num in numbers
+
+    open fun getListOfNumbers(): List<Int> = numbers
 }
