@@ -11,3 +11,7 @@ Update the winning statistics to include the second prize category.
 ### Features
 [x] - the amount should be minumum 1,000 KRW
 [x] - the amount should be divisible by 1000
+
+[ ] - lotto ticket should have 6 numbers
+[ ] - lotto ticket numbers should be unique
+[ ] - lotto ticket each number should be between 1 and 45
