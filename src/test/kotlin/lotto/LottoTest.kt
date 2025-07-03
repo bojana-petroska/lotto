@@ -9,33 +9,27 @@ private const val NUMBERS_SIZE = 6
 
 class LottoTest {
     @Test
-    fun `lotto ticket should have 6 numbers`() {
+    fun `if lotto ticket have over 6 numbers should be thrown an error`() {
         assertThrows<IllegalArgumentException> {
             Lotto(listOf(1, 2, 3, 4, 5, 6, 7))
         }
     }
 
     @Test
-    fun `lotto ticket numbers size equals to 6`() {
+    fun `if lotto ticket should have 6 numbers`() {
         val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
         assertTrue(lotto.getListOfNumbers().size == NUMBERS_SIZE)
     }
 
     @Test
-    fun `lotto ticket numbers should be unique`() {
+    fun `if lotto ticket numbers are not unique thrown`() {
         assertThrows<IllegalArgumentException> {
             Lotto(listOf(1, 2, 3, 4, 5, 5))
         }
     }
 
     @Test
-    fun `lotto ticket numbers are unique`() {
-        val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
-        assertTrue(lotto.getListOfNumbers().toSet().size == NUMBERS_SIZE)
-    }
-
-    @Test
-    fun `lotto ticket each number should be between 1 and 45`() {
+    fun `if lotto ticket each number is not in range between 1 and 45 thrown`() {
         assertThrows<IllegalArgumentException> {
             Lotto(listOf(56, 1, 2, 3, 4, 5))
         }
