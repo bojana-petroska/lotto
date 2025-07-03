@@ -16,7 +16,7 @@ object InputView {
         require(input.isNotBlank()) {
             "Input cannot be empty."
         }
-        return input.split(", ").map { it.toIntOrNull() ?: 0 }
+        return input.split(",").map { it.toIntOrNull() ?: 0 }
     }
 
     fun getBonusNumber(): Int {
