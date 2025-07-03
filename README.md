@@ -20,6 +20,7 @@ Update the winning statistics to include the second prize category.
 
 - [x] generate 6 unique, random, numbers in range 1 to 45
 - [x] machine issues lotto tickets
+- [x] figure out winning tickets
 
 #### Input
 - [x] get input of amount
