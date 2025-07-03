@@ -10,5 +10,5 @@ class Money(val amount: Int) {
         }
     }
 
-    fun getMoneyAmount(): Int = amount
+//    fun getMoneyAmount(): Int = amount
 }
