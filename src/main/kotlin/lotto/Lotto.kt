@@ -10,8 +10,7 @@ open class Lotto(val numbers: List<Int>) {
         require(numbers.toSet().size == NUMBERS_SIZE) {
             "lotto ticket numbers should be unique"
         }
-        require(numbers.all { it in 1 ..45 })
-        {
+        require(numbers.all { it in 1..45 }) {
             "lotto ticket each number should be between 1 and 45"
         }
     }
