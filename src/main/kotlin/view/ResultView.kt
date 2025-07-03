@@ -1,5 +1,6 @@
 package view
 
+import lotto.Calculator
 import lotto.Lotto
 import lotto.Rank
 
@@ -19,7 +20,20 @@ object ResultView {
         println("------------------")
         for (rank in Rank.entries.sortedBy { it.prizeAmount }) {
             if (rank == Rank.NONE) continue
-            println("${rank.label} - ${resul[rank] ?: 0}  tickets")
+            val bonusBall =
+                when (rank) {
+                    Rank.SECOND -> "+ Bonus Ball"
+                    else -> ""
+                }
+            println("${rank.matchCount} matches $bonusBall (${rank.prizeAmount} KRW) - ${resul[rank] ?: 0}  tickets")
         }
+    }
+
+    fun viewRate(
+        winningAmount: Int,
+        purchaseAmount: Int,
+    ) {
+        val rate = Calculator.division(winningAmount, purchaseAmount)
+        println("Total return rate is $rate (A rate below 1 means a loss)")
     }
 }

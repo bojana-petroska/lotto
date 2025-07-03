@@ -31,4 +31,4 @@ Update the winning statistics to include the second prize category.
 - [x] should print the number of purchased tickets
 - [x] should print the list of purchased tickets
 - [x] should print the result of the game
-- [ ] should print return rate
+- [x] should print return rate
