@@ -5,17 +5,22 @@ import view.ResultView
 
 fun main() {
     val amountInput = InputView.getAmountInput()
-    val purchaseAmount = Money(amountInput)
+    val purchaseAmount = Money.of(amountInput)
     val lottoMachine = LottoMachine(purchaseAmount)
     val lottoTickets = lottoMachine.tickets
 
     ResultView.viewTicketsAmount(lottoTickets.size)
     ResultView.viewTickets(lottoTickets)
 
-    val winningNumbers = Lotto(InputView.getWinningNumbers())
-    val bonusNumber = InputView.getBonusNumber()
+    val winningNumbersList = InputView.getWinningNumbers()
+    val winningNumbers = LottoNumbers.of(winningNumbersList)
 
-    val game = LottoGame(lottoTickets, winningNumbers, bonusNumber)
+    val bonusNumberInput = InputView.getBonusNumber()
+    val bonusNumber = BonusNumber.of(bonusNumberInput, winningNumbers.numbers)
+
+    val winningLotto = Lotto(winningNumbers)
+
+    val game = LottoGame(lottoTickets, winningLotto, bonusNumber)
 
     game.play()
 
