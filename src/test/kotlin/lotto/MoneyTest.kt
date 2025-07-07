@@ -7,14 +7,14 @@ class MoneyTest {
     @Test
     fun `the amount should be greater or equal to 1,000 KRW`() {
         assertThrows<IllegalArgumentException> {
-            Money(800)
+            Money.of(800)
         }
     }
 
     @Test
     fun `the amount should be divisible by 1000`() {
         assertThrows<IllegalArgumentException> {
-            Money(1200)
+            Money.of(1200)
         }
     }
 }
