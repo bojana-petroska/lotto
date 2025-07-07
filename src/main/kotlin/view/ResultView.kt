@@ -9,7 +9,12 @@ object ResultView {
         println("You have purchased $ticketsAmount tickets")
     }
 
-    fun viewTickets(tickets: List<Lotto>) {
+    fun viewTickets(
+        tickets: List<Lotto>,
+        manuelTicketsNumber: Int,
+        automaticTicketsNumber: Int,
+    ) {
+        println("Purchased $manuelTicketsNumber manual and $automaticTicketsNumber automatic tickets.")
         tickets.forEach {
             println(it.numbers.numbers.toString())
         }
