@@ -1,15 +1,10 @@
 package lotto
 
-const val TICKET_COST = 1000
-
 class LottoMachine(val money: Money, manuallyEnteredNumbers: List<LottoNumbers>) {
     val tickets: List<Lotto>
 
     init {
-        val maxTickets = money.amount / TICKET_COST
-        require(manuallyEnteredNumbers.size <= maxTickets) {
-            "Cannot purchase more manual tickets than available money allows."
-        }
+        money.canPurchaseTickets(manuallyEnteredNumbers.size)
 
         val manualLottoTickets = generateManualLottoTickets(manuallyEnteredNumbers)
         val remainingTicketCount = getAutomaticRemainingTicketsCount(manualLottoTickets)
@@ -19,18 +14,11 @@ class LottoMachine(val money: Money, manuallyEnteredNumbers: List<LottoNumbers>)
     }
 
     private fun generateManualLottoTickets(numbers: List<LottoNumbers>): List<Lotto> {
-        val manualLottoTickets =
-            numbers.map { lottoNumbers ->
-                Lotto(lottoNumbers)
-            }
-        return manualLottoTickets
+        return numbers.map(::Lotto)
     }
 
     private fun getAutomaticRemainingTicketsCount(manualLottoTickets: List<Lotto>): Int {
-        val purchasedManualAmount = manualLottoTickets.size * TICKET_COST
-        val remainingMoney = money.amount - purchasedManualAmount
-        val remainingTicketCount: Int = remainingMoney / TICKET_COST
-        return remainingTicketCount
+        return money.maxTickets(money.amount) - manualLottoTickets.size
     }
 
     private fun automaticLottoTickets(remainingTicketCount: Int): List<Lotto> {
