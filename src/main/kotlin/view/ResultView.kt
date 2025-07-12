@@ -39,6 +39,7 @@ object ResultView {
         purchaseAmount: Int,
     ) {
         val rate = Calculator.division(winningAmount, purchaseAmount)
-        println("Total return rate is $rate (A rate below 1 means a loss)")
+        val roundedRate = String.format("%.2f", rate)
+        println("Total return rate is $roundedRate (A rate below 1 means a loss)")
     }
 }
