@@ -7,16 +7,21 @@ object PurchaseManager {
         val amountInput = InputView.getAmountInput()
         val purchaseAmount = Money.of(amountInput)
 
-        val manuelTicketCount = InputView.getManualTicketCount(purchaseAmount.maxTickets(amountInput))
+        val (manualCount, manualTickets) = manualTickets(purchaseAmount)
+
+        val lottoMachine = LottoMachine(purchaseAmount, manualTickets)
+        return PurchaseResult(purchaseAmount, lottoMachine.tickets, manualCount)
+    }
+
+    private fun manualTickets(purchaseAmount: Money): Pair<Int, List<LottoNumbers>> {
+        val manuelTicketCount = InputView.getManualTicketCount()
         purchaseAmount.canPurchaseTickets(manuelTicketCount)
 
         InputView.getInputForNumber()
-        val manualTickets =
+        val manuelTickets =
             List(manuelTicketCount) {
                 InputView.getManualNumbers()
             }
-
-        val lottoMachine = LottoMachine(purchaseAmount, manualTickets)
-        return PurchaseResult(purchaseAmount, lottoMachine.tickets, manuelTicketCount)
+        return manuelTicketCount to manuelTickets
     }
 }
