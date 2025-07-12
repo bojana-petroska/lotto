@@ -17,8 +17,8 @@ object InputView {
         println("Enter the number of manual tickets to purchase.")
         val inputString = readLine() ?: ""
         val count = inputString.toIntOrNull()
-        require(count != null && count >= 0 && count <= maxCount) {
-            "Manual tickets must be between 0 and $maxCount."
+        require(count != null && count >= 0) {
+            "Manual ticket count must be 0 or greater."
         }
         return count
     }
