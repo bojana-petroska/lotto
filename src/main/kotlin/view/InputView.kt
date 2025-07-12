@@ -13,7 +13,7 @@ object InputView {
         return amount
     }
 
-    fun getManualTicketCount(maxCount: Int): Int {
+    fun getManualTicketCount(): Int {
         println("Enter the number of manual tickets to purchase.")
         val inputString = readLine() ?: ""
         val count = inputString.toIntOrNull()
