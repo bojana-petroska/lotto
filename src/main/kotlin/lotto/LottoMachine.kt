@@ -1,6 +1,6 @@
 package lotto
 
-class LottoMachine(val money: Money, manuallyEnteredNumbers: List<LottoNumbers>) {
+class LottoMachine(private val money: Money, manuallyEnteredNumbers: List<LottoNumbers>) {
     val tickets: List<Lotto>
 
     init {
@@ -25,6 +25,8 @@ class LottoMachine(val money: Money, manuallyEnteredNumbers: List<LottoNumbers>)
         val automaticTickets = List(remainingTicketCount) { Lotto(LottoNumbers.of(generateRandomNumber())) }
         return automaticTickets
     }
+
+    fun provideTickets(): List<Lotto> = tickets
 
     private fun generateRandomNumber() = (1..45).shuffled().take(6).sorted()
 }
